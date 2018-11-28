@@ -1,0 +1,43 @@
+{% extends "maqueta.html" %}
+{% load static %}
+
+{% block contenido %}
+<nav class="menu">
+    <a href="{% url 'index' %}">Inicio</a>
+    <a href="#">Quienes Somos</a>
+    <a href="#">Servicios</a>
+    <a href="#">Contáctanos</a>
+    <a href="{% url 'registrate' %}">Registrate</a>
+</nav> 
+
+<form class="login" method="POST">
+<section class="loginContenedor">
+    <div>
+        <p class="acceso"><img src="{% static 'images/huella.png' %}" width="30"> Login</p>
+    </div>
+    <div class="usuario">
+        <table>
+        {%csrf_token%}
+        <tr>
+            <td class="usuario">Usuario:</td><td>{{form.username}}</td>
+        </tr>
+        <tr>
+            <td class="usuario">contraseña:</td><td>{{form.password}}</td>
+        </tr>
+        </table>
+    </div>   
+    <div>
+        <p class="contraseña">¿Olvidaste tú Contraseña?</p>
+    </div>
+    <div>
+        <p class="recupera">Recuperala Aquí</p>
+    </div> 
+    <div>
+        <input type="submit" value="Iniciar Sesión" class="btnEnviar">
+    </div>
+    <div>
+        <a href="{% url 'registrate' %}" class="registrate">Crear Cuenta</a>
+    </div>
+</section>
+</form>
+{% endblock %}
