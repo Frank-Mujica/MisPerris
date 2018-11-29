@@ -10,9 +10,12 @@
     <script src="{% static 'prefix.js' %}" type="test/javascript"></script><!--Script para asegurarq eu en todos los navegadores y dispositivos el sitio se vea igual-->
     <link rel="stylesheet" href="{% static 'css/jquery.bxslider.css' %}">
 	<link rel="stylesheet" href="{% static 'css/estilos.css' %}"> <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/regionesCiudades.js' %}"></script>
     <script src="{% static 'js/jquery.bxslider.min.js' %}"></script>
+    <script src="{% static 'js/validacionFecha.js' %}"></script>
 </head>
     <body>
         <div class="contenedor">
@@ -27,6 +30,26 @@
 		<footer class="end">
  			<h1>Desarrollo Web y Mobile</h1>
 		</footer>		
-		</div>
+        </div>
+        <script>
+        $(document).ready(function(){
+            $.ajax({url: "http://127.0.0.1:8000/api/v1/mascotas",  success: function(result){
+                $("#listaMascotas").append("mascotas");
+                $.each(result,function(i,items){
+                    $("#contenido").append(`
+                <form class="mascotasLista">
+                    <img class='imgMascota' src='` + result[i].imgMascota + `' alt=''>
+                <div class="mascotasMuestra">
+                    <div class='mascotasListado'>
+                        <td>Nombre: </td>` + result[i].nombreMascota + `<td>
+                        <td>Raza: </td>` + result[i].raza + `<td>
+                        <td>Descripción: </td>` + result[i].descripcion + `<td>
+                        <td>Estado: </td>` + result[i].estado + `<td>
+                    </div>
+                `);
+               });
+            }});
+        })
+    </script>
     </body>
 </html>

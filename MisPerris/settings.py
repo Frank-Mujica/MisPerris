@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Back.apps.BackConfig',
+    'rest_framework',
+    'api',
+    'pwa',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'MisPerris.urls'
@@ -63,13 +68,15 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'MisPerris.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
@@ -80,6 +87,10 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.MisPerris.sqlite3'),
     }
 }
+
+SOCIAL_AUTH_GITHUB_KEY = 'd7206f7053ee15184a1a'
+SOCIAL_AUTH_GITHUB_SECRET = 'bb42dc6caf15259281ecfb55171bb1ca0655fe98'
+
 
 
 # Password validation
@@ -133,3 +144,17 @@ STATICFILES_DIRS = (
 TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(os.path.dirname(__file__)) + "/Back/", 'static', 'templates'),
 )
+
+AUTHENTICATION_BACKENDS = (
+  'social_core.backends.google.GoogleOAuth2',
+  'social_core.backends.github.GithubOAuth2',
+  'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/index/'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '182583967870-48pp0tmtdr3rj90h0dc2egjpr26obrec.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET= 'H73SqXwYupwBYu60brbyaBtV'
+
+OCIAL_AUTH_GITHUB_KEY = 'd7206f7053ee15184a1a'
+SOCIAL_AUTH_GITHUB_SECRET = 'bb42dc6caf15259281ecfb55171bb1ca0655fe98'

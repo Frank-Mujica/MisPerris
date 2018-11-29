@@ -2,10 +2,11 @@
 {% load static %}
 {% block contenido %}
 <div class="bienvenido">
-    <a class="usuario">Bienvenido:<a href="#" class="user"><strong>{{user.username}}</strong></a></a><a class="user" href="{% url 'logout' %}"><img href="{% url 'logout' %}" src="{% static 'images/exito.png' %}"> Cerrar Sesión</a></strong>
+    <a class="usuario">Bienvenido:<a href="#" class="user"><strong>{{user.username}}</strong></a></a><a class="user"> | </a><a class="user" href="{% url 'logout' %}">Cerrar Sesión</a></strong>>
 </div>
 <nav class="menu">
     <a href="{% url 'index' %}">Inicio</a>
+    <a href="{% url 'mascotas' %}">Mascotas</a>
     <a href="#">Contáctanos</a>
     <a href="#">Quienes Somos</a>
     <a href="#">Servicios</a>
@@ -15,7 +16,7 @@
     <div class="mascotasContenedor">
             {% csrf_token %}
         <div>
-            <p class="editarMascotas"><img src="{% static 'images/huella.png' %}" width="30"> {{ mascotas.nombreMascota }}</p>
+            <p class="editarMascotas">{{ mascotas.nombreMascota }}</p>
         </div>
             <img src="/media/{{ mascotas.imgMascota }}" class="imgMascotaEditar">
         <table class="registroMascotas">

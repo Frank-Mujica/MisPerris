@@ -13,27 +13,30 @@
 <form class="login" method="POST">
 <section class="loginContenedor">
     <div>
-        <p class="acceso"><img src="{% static 'images/huella.png' %}" width="30"> Login</p>
+        <p class="acceso">Inicia Sesión</p>
     </div>
     <div class="usuario">
         <table>
         {%csrf_token%}
         <tr>
-            <td class="usuario">Usuario:</td><td>{{form.username}}</td>
+            <td>{{form.username}}</td>
         </tr>
         <tr>
-            <td class="usuario">contraseña:</td><td>{{form.password}}</td>
+            <td>{{form.password}}</td>
         </tr>
         </table>
     </div>   
     <div>
-        <p class="contraseña">¿Olvidaste tú Contraseña?</p>
+        <p class="contraseña">¿Olvidaste tú Contraseña?<a class="recupera"> Recuperala Aquí.</a></p>
     </div>
     <div>
-        <p class="recupera">Recuperala Aquí</p>
-    </div> 
-    <div>
         <input type="submit" value="Iniciar Sesión" class="btnEnviar">
+    </div>
+    <div>
+         <a href="{% url 'social:begin' 'github' %}" class="btnSocial"><img src="{% static 'images/GitHub-Mark-32px.png' %}" class="gitlogo">Ingresar con Github</a><br>
+    </div>
+    <div>
+        <a href="{% url 'social:begin' 'google-oauth2' %}" class="btnSocial"><img src="{% static 'images/Logo_google.png' %}" class="gitlogo">Ingresar con Google+</a><br>
     </div>
     <div>
         <a href="{% url 'registrate' %}" class="registrate">Crear Cuenta</a>

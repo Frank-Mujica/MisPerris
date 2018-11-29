@@ -12,42 +12,51 @@
 <form class="registro" method="POST" enctype="multipart/form-data">
     <div class="registroContenedor">
         <div>
-            <p class="formRegistro"><img src="{% static 'images/huella.png' %}" width="30"> Registro</p>
+            <p class="formRegistro">Registro</p>
         </div>
         <table class="RegistroAdoptante">
         {% csrf_token %}
         <tr>
-            <td>Nombre Usuario: </td><td class="inputRegistro">{{form.username}}</td>
+            <td>{{form.username}}</td>
         </tr>    
         <tr>
-            <td>Contraseña: </td><td class="inputRegistro">{{form.password}}</td>
+            <td>{{form.password}}</td>
         </tr>
         <tr>
-            <td>Repetir Contraseña: </td><td class="inputRegistro">{{form.password2}}</td>
+            <td>{{form.password2}}</td>
         </tr>
         <tr>
-            <td>Rut: </td><td class="inputRegistro">{{form.rut}}</td>
+            <td>{{form.rut}}</td>
         <tr>
-            <td>Nombre: </td><td class="inputRegistro">{{form.nombre}}</td>
+        <tr>
+            <td>{{form.correo}}</td>
+        <tr>
+        <tr>
+            <td>{{form.correo2}}</td>
+        <tr>
+            <td>{{form.nombre}}</td>
         </tr>
         <tr>
-            <td>Fecha Nacimiento: </td><td class="selectFecha">{{form.fechaNac}}</td>      
+            <td class="fecha">Fecha de Nacimiento</td>      
         </tr>
         <tr>
-            <td>Teléfono: </td><td class="inputRegistro">{{form.telContacto}}</td>
+            <td>{{form.fechaNac}}</td>      
         </tr>
         <tr>
-            <td>Región: </td><td class="selectRegion">{{form.region}}</td>
+            <td>{{form.telContacto}}</td>
         </tr>
         <tr>
-            <td>Ciudad: </td><td class="selectCiudad">{{form.ciudad}}</td>
+            <td>{{form.region}}</td>
         </tr>
         <tr>
-            <td>Tipo Vivienda: </td><td class="selectVivienda">{{form.tipoVivienda}}</td>
+            <td>{{form.ciudad}}</td>
+        </tr>
+        <tr>
+            <td>{{form.tipoVivienda}}</td>
         </tr>  
     </table>
     <div>
-        <button type="submit" class="btnConfirmar">Confirmar</button>
+        <button type="submit" class="btnConfirmar">Registrate</button>
     </div>
 </div>
 </form>	

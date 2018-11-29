@@ -2,7 +2,7 @@
 {% load static %}
 {% block contenido %}
 <div class="bienvenido">
-    <a class="usuario">Bienvenido:<a href="#" class="user"><strong>{{user.username}}</strong></a></a><a class="user" href="{% url 'logout' %}"><img href="{% url 'logout' %}" src="{% static 'images/exito.png' %}"> Cerrar Sesión</a></strong>
+    <a class="usuario">Bienvenido:<a href="#" class="user"><strong>{{user.username}}</strong></a></a><a class="user"> | </a><a class="user" href="{% url 'logout' %}">Cerrar Sesión</a></strong>
 </div>
 <nav class="menu">
     <a href="{% url 'index' %}">Inicio</a>

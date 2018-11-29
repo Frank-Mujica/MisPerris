@@ -5,7 +5,7 @@
 {% if user.is_authenticated %}
 {% if user.is_staff %}
 <div class="bienvenido">
-    <a class="usuario">Bienvenido:<a href="#" class="user"><strong>{{user.username}}</strong></a></a><a class="user" href="{% url 'logout' %}"><img href="{% url 'logout' %}" src="{% static 'images/exito.png' %}"> Cerrar Sesión</a></strong>
+    <a class="usuario">Bienvenido:<a href="#" class="user"><strong>{{user.username}}</strong></a></a><a class="user"> | </a><a class="user" href="{% url 'logout' %}">Cerrar Sesión</a></strong>
 </div>
 <nav class="menu">
     <a href="{% url 'index' %}">Inicio</a>
@@ -15,7 +15,7 @@
 </nav> 
 {% else %}
 <div class="bienvenido">
-    <a class="usuario">Bienvenido:<a href="#" class="user"><strong>{{user.username}}</strong></a></a><a class="user" href="{% url 'logout' %}"><img href="{% url 'logout' %}" src="{% static 'images/exito.png' %}"> Cerrar Sesión</a></strong>
+    <a class="usuario">Bienvenido:<a href="#" class="user"><strong>{{user.username}}</strong></a></a><a class="user"> | </a><a class="user" href="{% url 'logout' %}">Cerrar Sesión</a></strong>
 </div>
 <nav class="menu">
     <a href="{% url 'index' %}">Inicio</a>
@@ -32,7 +32,7 @@
 <form class="mascotas" method="POST" enctype="multipart/form-data">
     <div class="mascotasContenedor">
          <div>
-            <p class="formRegistrMascota"><img src="{% static 'images/huella.png' %}" width="30"> Registro Mascotas</p>
+            <p class="formRegistroMascota"><img src="{% static 'images/huella.png' %}" width="30"> Registro Mascotas</p>
         </div>
         <table class="registroMascotas">
             {% csrf_token %}

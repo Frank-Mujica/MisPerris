@@ -2,13 +2,19 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.contrib.auth.models import User
+from api.models import Usuario, Mascota
 from .forms import Login, Registro, RegistroMascota
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .models import Usuario, Mascota
 from django.core.paginator import Paginator
+from os import environ
+from social_django.models import UserSocialAuth
 
 # Create your views here.
+@login_required
+def home(request):
+    return render(request, 'core/home.html')
+
 def index(request):
         return render(request, "index.html") 
 
@@ -20,6 +26,8 @@ def registro(redirect):
     return redirect("registroExitoso.html")
 
 def registrate(request):
+    if request.user.is_authenticated:
+        return redirect('index')
     actual=request.user
     form=Registro(request.POST or None)
     if form.is_valid():
@@ -54,7 +62,7 @@ def mascotas(request):
         mascota.save()
     form=RegistroMascota
     mascotas = Mascota.objects.all()
-    paginator = Paginator(mascotas, 6)
+    paginator = Paginator(mascotas, 8)
     page = request.GET.get('page')
     mascotas = paginator.get_page(page)
     return render(request, "mascotas.html", {'form':form, 'mascotas':mascotas, 'actual':actual})

@@ -5,6 +5,24 @@ $('#nombre').on('input', function() {
     }
 });
 
+$('#usuario').on('input', function() {
+    if (!/^[a-z/0-9/-/-_.]*$/i.test(this.value)) {
+        this.value = this.value.replace(/[^a-z/0-9/-/-_.]+/ig,"");
+    }
+});
+
+$('#password').on('input', function() {
+    if (!/^[a-z/0-9/-/-_.]*$/i.test(this.value)) {
+        this.value = this.value.replace(/[^a-z/0-9/-/-_.]+/ig,"");
+    }
+});
+
+$('#password2').on('input', function() {
+    if (!/^[a-z/0-9/-/-_.]*$/i.test(this.value)) {
+        this.value = this.value.replace(/[^a-z/0-9/-/-_.]+/ig,"");
+    }
+});
+
 /*Función Para que el Campo Solo Acepte Números*/
 $('#telefonoCon').on('input', function() {
     if (!/^[0-9]*$/i.test(this.value)) {

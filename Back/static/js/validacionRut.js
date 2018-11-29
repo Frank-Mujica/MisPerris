@@ -5,7 +5,7 @@ jQuery(document).ready(function($){
 ;(function($){
 	$.fn.rut = function(opt){
 		var defaults = $.extend({
-			error_html: '<span class="rut-error">Rut Incorrecto</span>',
+			error_html: '<td class="rut-error">Rut Incorrecto</td>',
 			formatear : true,
 			on : 'blur',
 			required : true,
@@ -17,9 +17,10 @@ jQuery(document).ready(function($){
 		}, opt);
 		return this.each(function(){
 			var $t = $(this);
+			$t.wrap('<div class="rut-container"></div>');
 			$t.attr('pattern', '[0-9]{1,2}.[0-9]{3}.[0-9]{3}-[0-9Kk]{1}').attr('maxlength', '12')/*Define el Máximo de Caracteres y Realiza la Operación*/;
 			if(defaults.required) $t.attr('required', 'required');
-			if(defaults.placeholder) $t.attr('placeholder', 'Ej:12.345.678-5')/*Muestra un Mensaje de fondo con un Ejemplo del Formato*/;
+			if(defaults.placeholder) $t.attr('placeholder', 'Ejemplo:12.345.678-5')/*Muestra un Mensaje de fondo con un Ejemplo del Formato*/;
 			if(defaults.formatear){/*Función Para Formatear el Rut*/
 				$t.on('blur', function(){
 					$t.val($.rut.formatear($t.val()));
