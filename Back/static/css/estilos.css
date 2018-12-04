@@ -533,7 +533,7 @@ li label{
 	width: 180px;
 	color: #008B8B;
 	padding: 5px;
-	margin-left: 45px;
+	margin-left: 48px;
 	margin-block-start: 5px;
 	border: 1px solid #5F9EA0;
 }
@@ -734,7 +734,7 @@ li label{
 }
 
 ::placeholder{
-	color: #008B8B;	
+	color: #40a8a8;	
 }
 
 .RegistroAdoptante select{
